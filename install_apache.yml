@@ -1,19 +1,21 @@
 ---
 
-- hosts:  192.168.0.22
+- hosts:  all
   become: true
   tasks:
 
   - name: install apache2 package
     apt:
       name: apache2
-      states: latest
+      state: latest
+    when: ansible_distribution == "ubuntu"
 #---
 
-- hosts: 192.168.0.23
-  become: true
-  tasks:
+#- hosts: 192.168.0.23
+#  become: true
+#  tasks:
 
-  - name: lak show ja salame
-    apt:
-      name: matrix
+#  - name: lak show ja salame
+#    apt:
+#      name: matrix
+#    when: ansible_distribution in ["debian", "ubuntu"]
